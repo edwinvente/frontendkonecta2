@@ -9,7 +9,11 @@ import {
 } from "react-router-dom";
 
 import { Navbar } from "./components/index";
-import { Blog } from "./blog";
+import { Blog, Create } from "./blog";
+import { HomePage } from "./HomePage";
+import { Register } from "./auth";
+import { Categories } from "./categories";
+import { Post } from "./blog/Post";
 
 const urlApi = 'http://localhost:8000/api/';
 
@@ -24,9 +28,13 @@ const AuthExample = () => {
           <Switch>
             <Route path="/" children={<HomePage />} exact />
             <Route path="/login" children={<LoginPage />} />
+            <Route path="/registro" children={<Register />} />
             {/* rutas protegidas */}
             <PrivateRoute path="/protected" children={<ProtectedPage />} />
             <PrivateRoute path="/blog" children={<Blog />} />
+            <PrivateRoute path="/crear/post" children={<Create />} />
+            <PrivateRoute path="/post/:slug" children={<Post />} />
+            <PrivateRoute path="/categorias" children={<Categories />} />
           </Switch>
         </div>
       </Router>
@@ -62,17 +70,19 @@ function useAuth() {
 }
 
 function useProvideAuth() {
-  const [user, setUser] = useState(null);
+  const token = window.localStorage.getItem("token") ? JSON.parse([window.localStorage.getItem("token")]) : null
+  const [user, setUser] = useState(token);
 
   const signin = cb => {
     return fakeAuth.signin(() => {
-      setUser("user");
+      setUser(token);
       cb();
     });
   };
 
   const signout = cb => {
     return fakeAuth.signout(() => {
+      //window.localStorage.clear();
       setUser(null);
       cb();
     });
@@ -92,19 +102,20 @@ function AuthButton() {
   return auth.user ? (
     <div className='container-fluid'>
       <p>
-        Welcome!{" "}
+        Bienvenido!{" "}
         <button
+          className='btn btn-danger btn-sm'
           onClick={() => {
             auth.signout(() => history.push("/"));
           }}
         >
-          Sign out
+          Salir
       </button>
       </p>
     </div>
   ) : (
       <div className='container-fluid'>
-        <p>You are not logged in.</p>
+        <p>No te has logueado aún.</p>
       </div>
     );
 }
@@ -130,10 +141,6 @@ function PrivateRoute({ children, ...rest }) {
   );
 }
 
-function HomePage() {
-  return <h3>Home</h3>;
-}
-
 function ProtectedPage() {
   return <h3>Protected</h3>;
 }
@@ -154,8 +161,8 @@ function LoginPage() {
   let { from } = location.state || { from: { pathname: "/" } };
 
   let login = async () => {
-
-    const request = await fetch(urlApi + 'login', {
+    const token = JSON.parse([window.localStorage.getItem("token")])
+    const request = await fetch(urlApi + 'login?token=' + token, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -169,7 +176,8 @@ function LoginPage() {
     });
 
     const data = await request.json();
-    await accessDashboard(data.token)
+    await accessDashboard(data)
+    console.log(data)
 
   };
 
@@ -184,10 +192,10 @@ function LoginPage() {
 
   return (
     <div className='container-fluid'>
-      <div className='row'>
-        <div className='col-md-3'>
+      <h1 className='text-center'> Ingreso</h1> <hr />
+      <div className='row justify-content-center'>
+        <div className='col-md-3 mt-5'>
           <p>Necesitas loguearte para acceder al {from.pathname}</p>
-
           <input type='text' className='form-control' placeholder='username' onChange={(e) => setUsername(e.target.value)} /><br />
           <input type='password' className='form-control' placeholder='password' onChange={(e) => setPassword(e.target.value)} /> <br />
           <button className='btn btn-primary btn-sm btn-block' onClick={login}>Ingresar</button>
