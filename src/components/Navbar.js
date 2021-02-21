@@ -12,13 +12,13 @@ export const Navbar = () => {
                 <Image src='https://static.wixstatic.com/media/ccc085_72ca18eb2fa04263b98e91168369db4a~mv2.png/v1/fill/w_220,h_130,al_c,q_85,usm_0.66_1.00_0.01/LOGOS%20WEB%20ITCON%20(2).webp' alt='Konecta' />
             </li>
             <li className='nav-link'>
-                <Link to="/">Home</Link>
+                <Link to="/login">Ingreso</Link>
             </li>
             <li className='nav-link'>
-                <Link to="/protected">Protected</Link>
+                <Link to="/registro">Registrate</Link>
             </li>
             <li className='nav-link'>
-                <Link to="/blog">Blog</Link>
+                <Link to="/blog">Nuestro Blog</Link>
             </li>
         </ul>
     )
