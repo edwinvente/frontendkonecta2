@@ -37,7 +37,7 @@ export const FiltersCategories = () => {
                 {categories.length > 0
                     ? categories.map((cat, i) => (
                         <li className='nav-link' key={cat.id}>
-                            <Link className='nav-item' to={`/categoria/${cat.slug}`}>{cat.title} </Link>
+                            <Link className='nav-item' to={`/categoria/${cat.slug}`}>✔ {cat.title}</Link>
                         </li>
 
                     )) :
