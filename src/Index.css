@@ -1,3 +1,21 @@
 *{
     font-family: 'Montserrat',sans-serif;
 }
+
+a{
+    text-decoration: none !important;
+    color: #1e365d !important;
+    font-weight: bold;
+}
+
+a:hover{
+    font-size: 1.1em;
+}
+
+a.btn-cards{
+    color: white !important;
+}
+
+a.btn-cards:hover{
+    color: white !important;
+}
