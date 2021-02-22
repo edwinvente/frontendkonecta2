@@ -56,7 +56,7 @@ export const Blog = () => {
                             ?
                             posts.map((post) => {
                                 return (
-                                    <Card className="card col-12 col-md-12 my-3" style={{ maxWidth: '600px' }}>
+                                    <Card className="card col-12 col-md-12 my-3" style={{ maxWidth: '700px' }}>
                                         <div className="row g-0">
                                             <div className="col-md-6">
                                                 <Imagen src={`http://localhost:8000/api/post/file/${post.image}`} className="card-img-top" alt={post.title} />
@@ -66,7 +66,7 @@ export const Blog = () => {
                                                     <h5 className="card-title">{post.title}</h5>
                                                     <p className="card-text">{post.short_text}</p>
                                                     <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                                    <Link className='btn btn-primary btn-block btn-sm' to={`/post/${post.slug}`}>Ver post completo</Link>
+                                                    <Link className='btn btn-primary btn-block btn-sm btn-cards' to={`/post/${post.slug}`}>Ver post completo</Link>
                                                 </div>
                                             </div>
                                         </div>
