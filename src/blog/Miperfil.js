@@ -48,7 +48,7 @@ export const Miperfil = () => {
                         <p>Cargando...</p>
                         :
                         <div>
-                            <h3>{perfil.name}</h3> <hr />
+                            <h3 className='text-center'>{perfil.name}</h3> <hr />
                             <p>{perfil.email}</p>
                             <p>{perfil.type_user}</p>
                             <p>{perfil.phone}</p>

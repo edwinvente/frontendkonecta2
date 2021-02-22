@@ -174,8 +174,8 @@ function LoginPage() {
   let { from } = location.state || { from: { pathname: "/" } };
 
   let login = async () => {
-    const token = JSON.parse([window.localStorage.getItem("token")])
-    const request = await fetch(urlApi + 'login?token=' + token, {
+    //const token = JSON.parse([window.localStorage.getItem("token")])
+    const request = await fetch(urlApi + 'login', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

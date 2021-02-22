@@ -79,11 +79,20 @@ export const Post = () => {
                     }
                     <Card className='card my-3 p-3'>
                         <div>
-                            <p>Agrega tu comentario ✍</p>
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <p>Agrega tu comentario ✍</p>
+                                </div>
+                                <div className='col-6 text-right'>
+                                    <a href='#'>
+                                        <small>Agregar a favoritos 💖</small>
+                                    </a>
+                                </div>
+                            </div>
                             <textarea className='form-control' rows={4} onChange={(e) => setComment(e.target.value)} value={coment}></textarea>
                             <button className='btn btn-dark btn-sm btn-block' onClick={(e) => handleSubmit(e)}>Comentar</button>
                         </div>
-                        <h4 className='mt-4'>comentarios</h4><hr />
+                        <h4 className='mt-4'>Comentarios 😁</h4><hr />
                         {comments.length > 0
                             ? comments.map((txt) => (
                                 <div className='p-1 my-1'>
