@@ -53,7 +53,7 @@ export const PostCategory = () => {
                             ?
                             posts.map((post) => {
                                 return (
-                                    <Card className="card col-12 col-md-12 my-3" style={{ maxWidth: '600px' }}>
+                                    <Card className="card col-12 col-md-12 my-3" style={{ maxWidth: '700px' }}>
                                         <div className="row g-0">
                                             <div className="col-md-6">
                                                 <Imagen src={`http://localhost:8000/api/post/file/${post.image}`} className="card-img-top" alt={post.title} />
