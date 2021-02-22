@@ -8,13 +8,22 @@ import {
   useLocation
 } from "react-router-dom";
 
-import { Navbar } from "./components/index";
+import { Footer, Navbar } from "./components";
 import { Blog, Create, PostCategory, Createcategory, Miperfil, Post } from "./blog";
 import { HomePage } from "./HomePage";
 import { Register } from "./auth";
 import { Categories } from "./categories";
+import styled from "styled-components";
 
 const urlApi = 'http://localhost:8000/api/';
+
+const Prefooter = styled.div`
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJhuoVijMteWxAuEjTRi9QAIcBk3JuZn8KEQ&usqp=CAU');
+  background-size: contain;
+  margin-top: 50px;
+  height: 180px;
+  width: 100%;
+`
 
 const AuthExample = () => {
   return (
@@ -38,6 +47,8 @@ const AuthExample = () => {
             <PrivateRoute path="/crear/categoria" children={<Createcategory />} />
             <PrivateRoute path="/categoria/:slug" children={<PostCategory />} />
           </Switch>
+          <Prefooter className='container-fluid'></Prefooter>
+          <Footer />
         </div>
       </Router>
     </ProvideAuth>
