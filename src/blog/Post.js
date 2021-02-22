@@ -55,6 +55,7 @@ export const Post = () => {
         }).then(result => {
             if (result.status == 200) {
                 console.log('accion de actualizacion')
+                setComment('')
             }
         }).catch(e => console.error(e))
     }
@@ -69,8 +70,8 @@ export const Post = () => {
                 <div className='col-12 col-md-6'>
                     {!inFetching ?
                         <Card className='col-12 p-3'>
-                            <h1>{post.title}</h1>
-                            <Imagen src={`http://localhost:8000/api/post/file/${post.image}`} className="card-img-top" alt={post.title} />
+                            <h1 className='text-center my-3'>{post.title}</h1><hr />
+                            <Imagen src={`http://localhost:8000/api/post/file/${post.image}`} className="card-img-top mb-3" alt={post.title} />
                             <p>{post.short_text}</p>
                             <p>{post.description}</p>
                         </Card>
@@ -78,7 +79,7 @@ export const Post = () => {
                     }
                     <Card className='card my-3 p-3'>
                         <div>
-                            <p>Agrega tu comentario</p>
+                            <p>Agrega tu comentario ✍</p>
                             <textarea className='form-control' rows={4} onChange={(e) => setComment(e.target.value)} value={coment}></textarea>
                             <button className='btn btn-dark btn-sm btn-block' onClick={(e) => handleSubmit(e)}>Comentar</button>
                         </div>
