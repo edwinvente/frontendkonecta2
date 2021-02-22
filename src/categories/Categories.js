@@ -37,7 +37,7 @@ export const Categories = () => {
     }
     return (
         <div className='container-fluid'>
-            <h1 className='text-center'>Listado de categorias</h1><hr />
+            <h1 className='text-center'>Categorias del Blog</h1><hr />
             <div className='row justify-content-center'>
                 <div className='col-md-3'>
                     <Sidebar />
@@ -50,7 +50,7 @@ export const Categories = () => {
                                     <Card className="card">
                                         <div className="card-body">
                                             <h5 className="card-title text-center">{cat.title}</h5>
-                                            <Link className='btn btn-primary btn-sm btn-block' to={`/categoria/${cat.slug}`}>Ver posts </Link>
+                                            <Link className='btn btn-primary btn-sm btn-block btn-cards' to={`/categoria/${cat.slug}`}>Ver posts </Link>
                                         </div>
                                     </Card>
                                 </div>
