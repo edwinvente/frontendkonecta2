@@ -9,11 +9,10 @@ import {
 } from "react-router-dom";
 
 import { Navbar } from "./components/index";
-import { Blog, Create } from "./blog";
+import { Blog, Create, PostCategory, Createcategory, Miperfil, Post } from "./blog";
 import { HomePage } from "./HomePage";
 import { Register } from "./auth";
 import { Categories } from "./categories";
-import { Post } from "./blog/Post";
 
 const urlApi = 'http://localhost:8000/api/';
 
@@ -31,10 +30,13 @@ const AuthExample = () => {
             <Route path="/registro" children={<Register />} />
             {/* rutas protegidas */}
             <PrivateRoute path="/protected" children={<ProtectedPage />} />
+            <PrivateRoute path="/perfil" children={<Miperfil />} />
             <PrivateRoute path="/blog" children={<Blog />} />
             <PrivateRoute path="/crear/post" children={<Create />} />
             <PrivateRoute path="/post/:slug" children={<Post />} />
             <PrivateRoute path="/categorias" children={<Categories />} />
+            <PrivateRoute path="/crear/categoria" children={<Createcategory />} />
+            <PrivateRoute path="/categoria/:slug" children={<PostCategory />} />
           </Switch>
         </div>
       </Router>

@@ -1,2 +1,6 @@
 export * from './Blog'
 export * from './Create'
+export * from './Createcategory'
+export * from './PostCategory'
+export * from './Miperfil'
+export * from './Post'

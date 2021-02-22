@@ -36,7 +36,10 @@ export const FiltersCategories = () => {
             <ul className=''>
                 {categories.length > 0
                     ? categories.map((cat, i) => (
-                        <li className='nav-link' key={cat.id}><Link to={`/${cat.slug}`}>{cat.title} test</Link></li>
+                        <li className='nav-link' key={cat.id}>
+                            <Link className='nav-item' to={`/categoria/${cat.slug}`}>{cat.title} </Link>
+                        </li>
+
                     )) :
                     <li>No hay Categorias...</li>
                 }

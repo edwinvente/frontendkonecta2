@@ -5,7 +5,7 @@ export const Sidebar = () => {
     return (
         <div>
             <ul className=''>
-                <li className='nav-link'><Link to="/blog">Mi perfil</Link></li>
+                <li className='nav-link'><Link to="/perfil">Mi perfil</Link></li>
                 <li className='nav-link'><Link to="/blog">Blog</Link></li>
                 <li className='nav-link'><Link to="/crear/post">Crear Post</Link></li>
                 <li className='nav-link'><Link to="/categorias">Categorias</Link></li>

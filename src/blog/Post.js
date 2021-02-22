@@ -23,8 +23,7 @@ export const Post = () => {
     const [comments, setComments] = useState([])
     const [token, setToken] = useState(tokens)
     const [inFetching, setFetch] = useState(true)
-
-
+    const [coment, setComment] = useState('')
     let params = useParams()
 
     useEffect(() => {
@@ -33,16 +32,32 @@ export const Post = () => {
         }).
             then(res => res.json()).
             then(data => {
-                setPost(data)
+                setPost(data.post)
+                setComments(data.comments)
                 setFetch(false)
                 console.log(data);
             }).
             catch(err => {
                 console.log('Hay un error http');
             })
-    }, [])
+    }, [coment])
 
-    console.log(params.slug)
+    const handleSubmit = (e) => {
+        //e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('comment', coment);
+        formData.append('slug', params.slug);
+
+        fetch(urlBackend + `posts/comment?token=${token.token}`, {
+            method: "POST",
+            body: formData
+        }).then(result => {
+            if (result.status == 200) {
+                console.log('accion de actualizacion')
+            }
+        }).catch(e => console.error(e))
+    }
 
     return (
         <div className='container-fluid my-3'>
@@ -64,12 +79,16 @@ export const Post = () => {
                     <Card className='card my-3 p-3'>
                         <div>
                             <p>Agrega tu comentario</p>
-                            <textarea className='form-control' rows={4}></textarea>
-                            <button className='btn btn-dark btn-sm btn-block'>Comentar</button>
+                            <textarea className='form-control' rows={4} onChange={(e) => setComment(e.target.value)} value={coment}></textarea>
+                            <button className='btn btn-dark btn-sm btn-block' onClick={(e) => handleSubmit(e)}>Comentar</button>
                         </div>
-                        <h4 className='mt-4'>comentarios</h4>
+                        <h4 className='mt-4'>comentarios</h4><hr />
                         {comments.length > 0
-                            ? <p>mapiar data</p>
+                            ? comments.map((txt) => (
+                                <div className='p-1 my-1'>
+                                    <small className='' key={txt.id}>{txt.comentario}</small> <hr />
+                                </div>
+                            ))
                             : <small>No hay comentarios...</small>
                         }
                     </Card>

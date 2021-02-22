@@ -46,11 +46,11 @@ export const Categories = () => {
                     <div className='row'>
                         {categories.length > 0 ?
                             categories.map((cat) => (
-                                <div className="col-sm-6">
+                                <div className="col-sm-6 my-3">
                                     <Card className="card">
                                         <div className="card-body">
                                             <h5 className="card-title text-center">{cat.title}</h5>
-                                            <a href="#" className="btn btn-primary btn-sm btn-block">Ver posts</a>
+                                            <Link className='btn btn-primary btn-sm btn-block' to={`/categoria/${cat.slug}`}>Ver posts </Link>
                                         </div>
                                     </Card>
                                 </div>
